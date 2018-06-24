@@ -9,7 +9,7 @@ class MainMenu extends Component {
       .then(res => res.json())
       .then(users => this.setState({ users }));
   }
-  
+
   render() {
     return (
     	<Grid>
@@ -26,7 +26,7 @@ class MainMenu extends Component {
 		          </Panel.Heading>
 		          <Panel.Body>
 		          <center>
-		            <Button bsStyle="primary" href="/">Host</Button>
+		            <Button bsStyle="primary" href="/host">Host</Button>
 		            <br /><br />
 		            <Button bsStyle="primary" href="/">Join</Button>
 		            <br /><br />
