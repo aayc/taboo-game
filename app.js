@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const io = require("socket.io")();
+const socketPort = 8000;
+
+var exampleRouter = require('./routes/example');
 
 var app = express();
 
@@ -19,8 +21,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/example', exampleRouter);
+
+io.on('connection', (client) => {
+	client.on('hello', (interval) => {
+	  console.log('client said hi');
+	})
+})
+
+io.listen(socketPort);
+console.log("Socket io listening on port " + socketPort)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

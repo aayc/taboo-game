@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Panel, Grid, Row, Col, Button } from 'react-bootstrap';
-
+import hello from '../components/socket-api.js'
 class MainMenu extends Component {
 	state = {users: []}
 
   componentDidMount() {
-    fetch('/users')
+    /*fetch('/example')
       .then(res => res.json())
-      .then(users => this.setState({ users }));
+      .then(users => this.setState({ users }));*/
+      
+    hello()
   }
 
   render() {

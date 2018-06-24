@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Panel, Grid, Col, 
   Row, ListGroup, ListGroupItem } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import logo from './logo.svg';
 import SpeechRecognition from 'react-speech-recognition'
 
 const propTypes = {
