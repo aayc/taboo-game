@@ -19,16 +19,12 @@ class MainMenu extends Component {
 		    		<Panel>
 		          <Panel.Heading>
 		            <center><Panel.Title componentClass="h1">Taboo</Panel.Title></center>
-		            <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}
 		          </Panel.Heading>
 		          <Panel.Body>
 		          <center>
 		            <Button bsStyle="primary" href="/host">Host</Button>
 		            <br /><br />
-		            <Button bsStyle="primary" href="/">Join</Button>
+		            <Button bsStyle="primary" href="/join">Join</Button>
 		            <br /><br />
 		            <Button bsStyle="primary" href="/">Settings</Button>
 		            <br /><br />

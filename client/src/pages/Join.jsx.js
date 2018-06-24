@@ -31,14 +31,6 @@ class Host extends Component {
 		          <center>
 		          	<FormControl
 		          		type="text"
-		          		name="playerId"
-		          		placeholder="Your ID"
-		          		value={this.state.playerId}
-		          		onChange={this.handleChange}
-		          	/>
-		          	<br />
-		          	<FormControl
-		          		type="text"
 		          		name="roomId"
 		          		placeholder="Room ID"
 		          		value={this.state.roomId}
@@ -55,7 +47,6 @@ class Host extends Component {
 		            <br /><br />
 		            <Button bsStyle="primary" href="/">Start</Button>
 		            <br /><br />
-		            <Button bsStyle="primary" href="/">Back</Button>
 		          </center>
 		          </Panel.Body>
 		        </Panel>

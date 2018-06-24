@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { FormControl, Panel, Grid, Row, Col, Button } from 'react-bootstrap';
 
-class Host extends Component {
+class Join extends Component {
 
 	constructor (props) {
 		super(props)
 
 		this.state = {
 			roomId: "",
-			maxPlayers: 4
+			playerId: ""
 		}
 
 		this.handleChange = (e) => {
@@ -31,29 +31,21 @@ class Host extends Component {
 		          <center>
 		          	<FormControl
 		          		type="text"
-		          		name="playerId"
-		          		placeholder="Your ID"
-		          		value={this.state.playerId}
-		          		onChange={this.handleChange}
-		          	/>
-		          	<br />
-		          	<FormControl
-		          		type="text"
 		          		name="roomId"
 		          		placeholder="Room ID"
 		          		value={this.state.roomId}
 		          		onChange={this.handleChange}
 		          	/>
-		            <br />
-		            <FormControl
-		          		type="number"
-		          		name="maxPlayers"
-		          		placeHolder="Max # of players"
-		          		value={this.state.maxPlayers}
+		          	<FormControl
+		          		type="text"
+		          		name="playerId"
+		          		placeholder="Your ID"
+		          		value={this.state.playerId}
 		          		onChange={this.handleChange}
 		          	/>
+		            <br />
 		            <br /><br />
-		            <Button bsStyle="primary" href="/">Start</Button>
+		            <Button bsStyle="primary" href="/">Join</Button>
 		            <br /><br />
 		            <Button bsStyle="primary" href="/">Back</Button>
 		          </center>
@@ -66,4 +58,4 @@ class Host extends Component {
   }
 }
 
-export default Host
+export default Join
