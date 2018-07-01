@@ -3,9 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-const io = require("socket.io")();
-const socketPort = 8000;
+var socketeer = require('./socket-server.js')
 
 var exampleRouter = require('./routes/example');
 
@@ -22,15 +20,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/example', exampleRouter);
-
-io.on('connection', (client) => {
-	client.on('hello', (interval) => {
-	  console.log('client said hi');
-	})
-})
-
-io.listen(socketPort);
-console.log("Socket io listening on port " + socketPort)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

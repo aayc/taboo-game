@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormControl, Panel, Grid, Row, Col, Button } from 'react-bootstrap';
+import { createRoom, debug } from '../components/socket-api.js'
 
 class Host extends Component {
 
@@ -7,12 +8,24 @@ class Host extends Component {
 		super(props)
 
 		this.state = {
+			username: "",
 			roomId: "",
 			maxPlayers: 4
 		}
 
 		this.handleChange = (e) => {
 			this.setState({ [e.target.name] : e.target.value })
+		}
+
+		this.makeRoom = () => {
+			createRoom(this.state["roomId"], this.state["maxPlayers"]).then(
+			() => {
+				this.props.history.push("/lobby")
+			},
+			() => {
+				alert("Room creation failed: try a different room name.")
+				this.setState({ roomId : "" })
+			})
 		}
 
 	}
@@ -31,9 +44,9 @@ class Host extends Component {
 		          <center>
 		          	<FormControl
 		          		type="text"
-		          		name="playerId"
-		          		placeholder="Your ID"
-		          		value={this.state.playerId}
+		          		name="username"
+		          		placeholder="Your Name"
+		          		value={this.state.username}
 		          		onChange={this.handleChange}
 		          	/>
 		          	<br />
@@ -48,12 +61,12 @@ class Host extends Component {
 		            <FormControl
 		          		type="number"
 		          		name="maxPlayers"
-		          		placeHolder="Max # of players"
+		          		placeholder="Max # of players"
 		          		value={this.state.maxPlayers}
 		          		onChange={this.handleChange}
 		          	/>
 		            <br /><br />
-		            <Button bsStyle="primary" href="/">Start</Button>
+		            <Button bsStyle="primary" onClick={this.makeRoom}>Start Lobby</Button>
 		            <br /><br />
 		            <Button bsStyle="primary" href="/">Back</Button>
 		          </center>

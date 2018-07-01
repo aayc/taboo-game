@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Panel, Grid, Row, Col, Button } from 'react-bootstrap';
-import hello from '../components/socket-api.js'
 class MainMenu extends Component {
 	state = {users: []}
 
@@ -9,7 +8,6 @@ class MainMenu extends Component {
       .then(res => res.json())
       .then(users => this.setState({ users }));*/
       
-    hello()
   }
 
   render() {
