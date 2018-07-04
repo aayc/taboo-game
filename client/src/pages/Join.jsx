@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormControl, Panel, Grid, Row, Col, Button } from 'react-bootstrap';
+import { join } from "../components/socket-api.js"
 
 class Join extends Component {
 
@@ -8,11 +9,27 @@ class Join extends Component {
 
 		this.state = {
 			roomId: "",
-			playerId: ""
+			username: ""
 		}
 
 		this.handleChange = (e) => {
 			this.setState({ [e.target.name] : e.target.value })
+		}
+
+		this.joinRoom = () => {
+			join(this.state.roomId, this.state.username).then(
+			() => {
+				this.props.history.push({
+					pathname: "/lobby",
+					state: {
+						username: this.state.username
+					}
+				})
+			},
+			() => {
+				alert("Failed to join room.  Maybe it doesn't exist.")
+				this.setState({ roomId : "" })
+			})
 		}
 
 	}
@@ -25,10 +42,18 @@ class Join extends Component {
           <Col xs={6} md={4}>
 		    		<Panel>
 		          <Panel.Heading>
-		            <center><Panel.Title componentClass="h1">Host New Game</Panel.Title></center>
+		            <center><Panel.Title componentClass="h1">Join Existing Game</Panel.Title></center>
 		          </Panel.Heading>
 		          <Panel.Body>
 		          <center>
+		          	<FormControl
+		          		type="text"
+		          		name="username"
+		          		placeholder="Your ID"
+		          		value={this.state.username}
+		          		onChange={this.handleChange}
+		          	/>
+		          	<br />
 		          	<FormControl
 		          		type="text"
 		          		name="roomId"
@@ -36,16 +61,10 @@ class Join extends Component {
 		          		value={this.state.roomId}
 		          		onChange={this.handleChange}
 		          	/>
-		          	<FormControl
-		          		type="text"
-		          		name="playerId"
-		          		placeholder="Your ID"
-		          		value={this.state.playerId}
-		          		onChange={this.handleChange}
-		          	/>
+
 		            <br />
 		            <br /><br />
-		            <Button bsStyle="primary" href="/">Join</Button>
+		            <Button bsStyle="primary" onClick={this.joinRoom}>Join</Button>
 		            <br /><br />
 		            <Button bsStyle="primary" href="/">Back</Button>
 		          </center>
