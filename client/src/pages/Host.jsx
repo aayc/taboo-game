@@ -19,7 +19,6 @@ class Host extends Component {
 		this.makeRoom = () => {
 			create(this.state.roomId, this.state.username).then(
 			() => {
-				console.log("hello")
 				this.props.history.push({
 					pathname: "/lobby",
 					state: {

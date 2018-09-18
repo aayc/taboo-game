@@ -29,6 +29,13 @@ io.on('connection', (client) => {
 			io.to(roomId).emit("update-room-usernames", getUsernamesInRoom(roomId))
 		})
 
+	// On starting game
+	client.on("room-start", (roomId) => {
+		
+		console.log("Starting room " + roomId)
+		// connect peers
+	})
+
 	// On asking for usernames in room
 	askListener(client, "get-room-usernames", () => {
 		var inquiryId = clients[client.id]["in-room"]

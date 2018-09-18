@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TabooCard from './TabooCard.jsx';
+import Game from './pages/Game.jsx';
 import MainMenu from './pages/MainMenu.jsx';
 import Host from './pages/Host.jsx';
 import Join from "./pages/Join.jsx";
@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path='/game' component={TabooCard} />
+        <Route path='/game' component={Game} />
         <Route path='/host' component={Host} />
         <Route path='/lobby' component={Lobby} />
         <Route path='/join' component={Join} />

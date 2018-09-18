@@ -22,6 +22,15 @@ class Lobby extends Component {
 		});
 	}
 
+	/*startGame () {
+		this.props.history.push({
+			pathname: "/game",
+			state: {
+				username: this.state.username
+			}
+		})
+	}*/
+
 	componentDidMount () {
 		getRoomUsernames().then(
 		 usernames => this.setState({ usernamesInLobby: usernames }),
@@ -46,7 +55,7 @@ class Lobby extends Component {
 		          		))}
 		          	</ListGroup>
 		            <br /><br />
-		            <Button bsStyle="primary" href="/">Start Game</Button>
+		            <Button bsStyle="primary" href="/game">Start Game</Button>
 		            <br /><br />
 		            <Button bsStyle="primary" href="/">Exit Lobby</Button>
 		          </center>
